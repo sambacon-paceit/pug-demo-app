@@ -8,7 +8,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { LoginComponent } from "./login/login.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -19,6 +19,7 @@ import { LoginComponent } from "./login/login.component";
     ],
     imports: [
         NativeScriptModule,
+        NativeScriptFormsModule,
         AppRoutingModule
     ],
     declarations: [

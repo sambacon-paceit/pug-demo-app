@@ -19,7 +19,7 @@
         hint="Enter Password"
         secure="true"
         returnKeyType="done"
-        (returnPress)="submit()"
+        (returnPress)="login()"
         [(ngModel)]="user.password"
         [isEnabled]="!isAuthenticating"
         class="password-field"
@@ -29,7 +29,7 @@
         [isEnabled]="!isAuthenticating"
         text="Login"
         class="login-button uppercase"
-        (tap)="submit()"></Button>
+        (tap)="login()"></Button>
         <Button
         text="Register"
         class="register-button uppercase"
