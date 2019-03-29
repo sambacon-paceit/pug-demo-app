@@ -1,0 +1,15 @@
+<ActionBar class="action-bar">
+    <ActionItem icon="res://navigation/back" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" [text]="member.first_name + ' ' + member.last_name"></Label>
+</ActionBar>
+
+<StackLayout class="page center">
+    <Image [src]="member.image"></Image>
+    <Label [text]="member.first_name + ' ' + member.last_name"></Label>
+    <Label [text]="member.company"></Label>
+    <Label [text]="member.position"></Label>
+    <Label [text]="member.email"></Label>
+    <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+</StackLayout>

@@ -7,7 +7,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header">
             <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-            <Label class="sidedrawer-header-brand" [text]="user.data.first_name + ' ' + user.data.last_name"></Label>
+            <Label class="sidedrawer-header-brand" [visibility]="user.data ? 'visible' : 'collapsed'" [text]="user.data.first_name + ' ' + user.data.last_name"></Label>
             <Label class="footnote" [text]="user.username" [visibility]="user.username ? 'visible' : 'collapsed'"></Label>
         </StackLayout>
     
@@ -17,27 +17,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                     <Label col="0" text="&#xf015;" class="fa"></Label>
                     <Label col="1" text="Home" class="p-r-10"></Label>
                 </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/browse')" (tap)="onNavItemTap('/browse')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Browse" class="p-r-10"></Label>
-                </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">
-                    <Label col="0" text="&#xf002;" class="fa"></Label>
-                    <Label col="1" text="Search" class="p-r-10"></Label>
-                </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
-                    <Label col="0" text="&#xf005;" class="fa"></Label>
-                    <Label col="1" text="Featured" class="p-r-10"></Label>
-                </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">
-                    <Label col="0" text="&#xf013;" class="fa"></Label>
-                    <Label col="1" text="Settings" class="p-r-10"></Label>
-                </GridLayout>
-
+                
                 <StackLayout class="hr-light"></StackLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/logout')" (tap)="logout()">

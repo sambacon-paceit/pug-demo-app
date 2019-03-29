@@ -1,16 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { User } from "../shared/user/user.model";
 @Component({
     moduleId: module.id,
     templateUrl: "./login.component.html",
-    styleUrls: ["./login-common.css"]
+    styleUrls: ["./login-common.scss"]
 })
 
 export class LoginComponent implements OnInit {
     user: User;
     isAuthenticating: boolean = false;
+
+    @ViewChild("password") password: ElementRef;
     
     constructor(
         private nav: RouterExtensions
@@ -32,7 +34,6 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        console.log(this.user);
         if (this.isEmpty(this.user)) {
             return alert("Please enter your email address and password.");
         }
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.isAuthenticating = true;
+
         Kinvey.User.login(this.user.email, this.user.password)
         .then((user: Kinvey.User) => {
             this.nav.navigate(["members"]);
@@ -54,6 +56,10 @@ export class LoginComponent implements OnInit {
             this.isAuthenticating = false;
             alert(error);
         });
+    }
+
+    focusPassword() {
+        this.password.nativeElement.focus();
     }
 
     private isEmpty(obj) {

@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { MembersService } from "./members.service";
-import { Member } from "./member";
+import { MembersService } from "../shared/member/members.service";
+import { IMember } from "../shared/member/member";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
+import { RouterExtensions } from "nativescript-angular/router";
+import { ListViewEventData } from "nativescript-ui-listview";
 import * as app from "tns-core-modules/application";
 
 @Component({
@@ -16,6 +18,7 @@ export class MembersComponent implements OnInit {
     private _members: ObservableArray<any> = new ObservableArray<any>([]);
 
     constructor(
+        private routerExtensions: RouterExtensions,
         private membersService: MembersService
     ) {}
 
@@ -23,18 +26,23 @@ export class MembersComponent implements OnInit {
         this._isLoading = true;
 
         this.membersService.load()
-        .then((members: Array<Member>) => {
+        .then((members: Array<IMember>) => {
             this._members = new ObservableArray(members);
             this._isLoading = false;
         });
     }
 
-    get members(): ObservableArray<Member> {
+    get members(): ObservableArray<IMember> {
         return this._members;
     }
 
-    onMemberTap() {
-        console.log("Tapped member");
+    onMemberTap(args: ListViewEventData): void {
+        const id = args.view.bindingContext._id;
+        this.routerExtensions.navigate(["member"], {
+            queryParams: {
+                memberId: id
+            }
+        });
     }
 
     onDrawerButtonTap(): void {

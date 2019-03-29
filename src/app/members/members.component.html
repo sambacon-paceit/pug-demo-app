@@ -1,25 +1,22 @@
 <ActionBar class="action-bar">
     <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
         ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="PUG Members"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
+<GridLayout class="page-content">
     <RadListView [items]="members" (itemTap)="onMemberTap($event)" class="list-group">
         <ng-template tkListItemTemplate let-member="item">
-            <StackLayout class="list-group-item">
-                <GridLayout rows="*, *, *" columns="auto, *" class="list-group-item-content">
-                    <Label col="0" row="0" [text]="member.first_name" class="text-primary font-weight-bold"></Label>
-                    <Label col="1" row="0" [text]="member.last_name" class="text-primary font-weight-bold" marginLeft="5"></Label>
+            <GridLayout  columns="80, auto" rows="auto, auto">
+                <Image [src]="member.image" col="0" height="60" width="60" padding="10 0 0 0"></Image>
+                <GridLayout rows="*, *" columns="*, auto" col="1" padding="20 0 20 0">
+                    <Label col="0" row="0" [text]="member.first_name + ' ' + member.last_name" class="text-primary font-weight-bold"></Label>
                     <Label col="0" row="1" colSpan="2" [text]="member.company" class="text-primary font-weight-bold"></Label>
-
-                    <StackLayout row="2" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
-
                 </GridLayout>
-            </StackLayout>
+                <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
+            </GridLayout>
         </ng-template>
     </RadListView>
 

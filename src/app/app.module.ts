@@ -4,10 +4,11 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
-import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MembersComponent } from "./members/members.component";
+import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./login/login.component";
+import { MemberComponent } from "./member/member.component";
+import { MembersComponent } from "./members/members.component";
 
 @NgModule({
     bootstrap: [
@@ -23,6 +24,7 @@ import { LoginComponent } from "./login/login.component";
     declarations: [
         AppComponent,
         LoginComponent,
+        MemberComponent,
         MembersComponent
     ],
     schemas: [

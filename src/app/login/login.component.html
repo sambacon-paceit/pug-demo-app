@@ -1,54 +1,56 @@
 <GridLayout class="background">
-  <StackLayout class="main-container" verticalAlignment="center" [visibility]="!isAuthenticating ? 'visible' : 'collapsed'" >
-      <Image src="res://allsop_logo_bigger" width="140" height="auto" horizontalAlignment="center" class="logo"></Image>
-      <TextField
-        id="email"
-        hint="Email Address"
-        keyboardType="email"
-        returnKeyType="next"
-        (returnPress)="focusPassword()"
-        [(ngModel)]="user.email"
-        [isEnabled]="!isAuthenticating"
-        autocorrect="false"
-        autocapitalizationType="none"
-        class="login-field"
-        style.placeholderColor="#ccc"
-        row="0"></TextField>
-      <TextField #password
-        id="password"
-        hint="Enter Password"
-        secure="true"
-        returnKeyType="done"
-        (returnPress)="login()"
-        [(ngModel)]="user.password"
-        [isEnabled]="!isAuthenticating"
-        class="password-field"
-        style.placeholderColor="#ccc"
-        row="1"></TextField>
-        <Button
-        [isEnabled]="!isAuthenticating"
-        text="Login"
-        class="login-button uppercase"
-        (tap)="login()"></Button>
-        <Button
-        text="Register"
-        class="register-button uppercase"
-        (tap)="register()"
-        ></Button>
+    <StackLayout [visibility]="!isAuthenticating ? 'visible' : 'collapsed'" >
+        <Image src="~/images/pug-small.png" width="140" height="auto" marginTop="40" horizontalAlignment="center" class="logo"></Image>
+    </StackLayout>
+    <StackLayout class="main-container" verticalAlignment="center" [visibility]="!isAuthenticating ? 'visible' : 'collapsed'" >
+        <TextField
+            id="email"
+            hint="Email Address"
+            keyboardType="email"
+            returnKeyType="next"
+            (returnPress)="focusPassword()"
+            [(ngModel)]="user.email"
+            [isEnabled]="!isAuthenticating"
+            autocorrect="false"
+            autocapitalizationType="none"
+            class="login-field"
+            style.placeholderColor="#ccc"
+            row="0"></TextField>
+        <TextField #password
+            id="password"
+            hint="Enter Password"
+            secure="true"
+            returnKeyType="done"
+            (returnPress)="login()"
+            [(ngModel)]="user.password"
+            [isEnabled]="!isAuthenticating"
+            class="password-field"
+            style.placeholderColor="#ccc"
+            row="1"></TextField>
+            <Button
+            [isEnabled]="!isAuthenticating"
+            text="Login"
+            class="login-button uppercase"
+            (tap)="login()"></Button>
+            <Button
+            text="Register"
+            class="register-button uppercase"
+            (tap)="register()"
+            ></Button>
 
-        <ActivityIndicator
-        [busy]="isAuthenticating"
-        rowSpan="2"></ActivityIndicator>
-  </StackLayout>
+            <ActivityIndicator
+            [busy]="isAuthenticating"
+            rowSpan="2"></ActivityIndicator>
+    </StackLayout>
 
-  <GridLayout
+    <GridLayout
         [visibility]="isAuthenticating ? 'visible' : 'collapsed'">
-      <ActivityIndicator
-          width="30"
-          height="30"
-          [busy]="isAuthenticating"
-          class="activity-indicator">
-      </ActivityIndicator>
-</GridLayout>
+        <ActivityIndicator
+            width="30"
+            height="30"
+            [busy]="isAuthenticating"
+            class="activity-indicator">
+        </ActivityIndicator>
+    </GridLayout>
 
 </GridLayout>

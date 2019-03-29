@@ -22,9 +22,21 @@
     }
 }
 
+.page {
+    padding: 20;
+}
+
+.center {
+    text-align: center;
+}
+
 //Action bar
 ActionBar .action-bar-title {
     horizontal-align: center;
+}
+
+.action-bar {
+    background-color: $blue-light;
 }
 
  // Drawer navigation custom styles
@@ -55,7 +67,7 @@ $sidedrawer-list-icon-size: 20;
     }
 
     .sidedrawer-header {
-        background-color: $ab-background;
+        background-color: $blue-light;
 
         .sidedrawer-header-brand {
             color: $ab-color;
