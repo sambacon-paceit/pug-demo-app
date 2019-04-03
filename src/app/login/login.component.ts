@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { Page } from "tns-core-modules/ui/page";
+import { RouterExtensions } from "nativescript-angular/router";
 import { User } from "../shared/user/user.model";
+
 @Component({
     moduleId: module.id,
     templateUrl: "./login.component.html",
@@ -15,12 +17,16 @@ export class LoginComponent implements OnInit {
     @ViewChild("password") password: ElementRef;
     
     constructor(
+        private page: Page,
         private nav: RouterExtensions
     ) {
         this.user = new User();
     }
 
     ngOnInit() {
+        // Hide action bar
+        this.page.actionBarHidden = true;
+
         // Retrieve kinvey active user
         const activeUser = Kinvey.User.getActiveUser();
         if (activeUser) {
