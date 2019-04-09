@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -54,13 +55,19 @@ export class LoginComponent implements OnInit {
 
         this.isAuthenticating = true;
 
+        // Call kinvey login with email and password
         Kinvey.User.login(this.user.email, this.user.password)
         .then((user: Kinvey.User) => {
+            // Redirect to members screen if successful
             this.nav.navigate(["members"]);
         })
         .catch((error: Kinvey.BaseError) => {
             this.isAuthenticating = false;
-            alert(error);
+            dialogs.alert({
+                title: "Invalid Credentials",
+                message: error.message,
+                okButtonText: "ok"
+            });
         });
     }
 

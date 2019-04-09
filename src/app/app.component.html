@@ -7,8 +7,8 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header">
             <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-            <Label class="sidedrawer-header-brand" [visibility]="user.data ? 'visible' : 'collapsed'" [text]="user.data.first_name + ' ' + user.data.last_name"></Label>
-            <Label class="footnote" [text]="user.username" [visibility]="user.username ? 'visible' : 'collapsed'"></Label>
+            <Label class="sidedrawer-header-brand" *ngIf="user && user.data.first_name && user.data.last_name" [text]="user.data.first_name + ' ' + user.data.last_name"></Label>
+            <Label class="footnote" *ngIf="user && user.username" [text]="user.username"></Label>
         </StackLayout>
     
         <ScrollView row="1">
